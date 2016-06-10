@@ -56,21 +56,43 @@
      
             </div>
         </div>
-        <div class="row">
+       <div class="row">
+             
+          <?php
+            $dbc = mysqli_connect('localhost', 'root', 'p@ssword', 'do_me');
+            $query = "SELECT category_name, title, content
+                      FROM category, note
+                      WHERE category_id = category.id";
+            $data = mysqli_query($dbc, $query);
             
-                <div class="card">
-                    <!--div class="card-image waves-effect waves-block waves-light"-->
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4"><b>Bayanihan in Bataan</b><i class="mdi-navigation-more-vert right"></i></span>
-                        <p>Jarold Garcia</p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">News Title <i class="mdi-navigation-close right"></i></span>
-                        <p>Here is some more information about this project that is only revealed once clicked on.</p>
-                    </div>
-                </div>            
-            
+          
+            for ($i = 0; $i < mysqli_num_rows($data); $i++) {
+              $row = mysqli_fetch_array($data);
+          
+              echo '<div class="card">
+                      <div class="card-content">
+                          <span class="card-title activator grey-text text-darken-4"><b>'
+                      .$row['title']
+                      .'</b><i class="mdi-navigation-more-vert right"></i></span>
+                          <p>'
+                      .$row['category_name']
+                      .'</p>
+                      </div>
+                      <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">'
+                      .$row['title']
+                      .'<i class="mdi-navigation-close right"></i></span>
+                          <p>'
+                      .$row['content']
+                      .'</p>
+                      </div>
+                  </div>      '
+              ;
+          }
+        ?>          
+
         </div>
+    </div>
     </div>
 </div>
 
