@@ -29,14 +29,24 @@
 
                  
                  <ul id="dropdown2" class="dropdown-content grey">
-    <li><a href="#!">All</a></li>
-    <li><a href="#!">Work</a></li>
-    <li><a href="#!">School</a></li>
-    <li><a href="#!">Health</a></li>
-  </ul>
+                    <li><a href="#!">All</a></li>
+                    <li><a href="#!">Work</a></li>
+                    <li><a href="#!">School</a></li>
+                    <li><a href="#!">Health</a></li>
+                 </ul>
 
   
-<a href="hackup-submit.html" id="download-button" class="waves-effect waves-light btn deep-purple darken-2">+ DO</a> 
+                 <button data-target = "modal1" id="download-button" class="waves-effect waves-light btn deep-purple darken-2 modal-trigger">+ DO</button> 
+                  <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                      <div class="modal-content">
+                        <h4>Modal Header</h4>
+                        <p>A bunch of text</p>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                      </div>
+                    </div>
             </div>
 
             <div class="col s12 m1 l4">
@@ -134,7 +144,11 @@
   <!--  Scripts-->
   <script src="js/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-
+  <script type="text/javascript">
+     $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+  </script>
   </body>
 </html>
