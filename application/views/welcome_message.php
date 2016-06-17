@@ -66,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        <div class="row">
 
           <?php
-            $dbc = mysqli_connect('localhost', 'root', '', 'prosdev');
+            $dbc = mysqli_connect('localhost', 'root', '', 'do_me');
             $query = "SELECT category_name, title, content
                       FROM category, note
                       WHERE category_id = category.id";
