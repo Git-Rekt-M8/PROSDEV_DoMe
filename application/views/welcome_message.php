@@ -18,6 +18,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div-->
 <!--News-->
+
+
+
 <div class="section scrollspy" id="news">
     <div class="container">
         <div class="row">
@@ -27,9 +30,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                  <ul id="dropdown2" class="dropdown-content grey">
                     <li><a href="index.php?category=0">All</a></li>
-                    <li><a href="index.php?category=1">Work</a></li>
-                    <li><a href="index.php?category=2">School</a></li>
-                    <li><a href="index.php?category=3">Health</a></li>
+                  <?php
+                      $categoryArray = array();
+                      $dbc = mysqli_connect('localhost', 'root', '', 'do_me');
+                                  $query = "SELECT id, category_name
+                                            FROM category";
+                                  $data = mysqli_query($dbc, $query);
+
+                                  for ($i = 0; $i < mysqli_num_rows($data); $i++) 
+                                  {
+                                    $row = mysqli_fetch_array($data);
+                                    array_push($categoryArray, $row ['category_name']); 
+                                    echo '<li><a href="index.php?category='.$row['id'].'">'.$row['category_name'].'</a></li>';
+                                  }
+                      
+
+
+                  ?>
                  </ul>
 
 
@@ -59,27 +76,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                   </nav-->
                   <br><br><br><br>
-                  <a class="btn dropdown-button grey darken-2" href="#!" data-activates="dropdown2">All<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                  <a class="btn dropdown-button grey darken-2" href="#!" data-activates="dropdown2">
+                      <?php
+                      $chosenCategName = "All";
+                      $categ_id = '0';
+                      if (isset($_GET["category"]))
+                      {
+                        $categ_id = $_GET["category"];
+
+                        if($categ_id !='0'){
+
+                            $query = "SELECT id, category_name
+                                  FROM category 
+                                  WHERE id = ".$categ_id;
+
+                            $data = mysqli_query($dbc, $query);
+                            
+                            $row = mysqli_fetch_array($data);
+                            $chosenCategName = $row['category_name'];
+                          }
+                      }
+
+                      echo $chosenCategName;
+
+                      ?>
+                    <i class="mdi-navigation-arrow-drop-down right"></i></a>
 
             </div>
         </div>
        <div class="row">
 
           <?php
-            $dbc = mysqli_connect('localhost', 'root', '', 'prosdev');
-            $query = "SELECT category_name, title, content
-                      FROM category, note
-                      WHERE category_id = category.id";
+            $dbc = mysqli_connect('localhost', 'root', '', 'do_me');
+            if($categ_id == '0')
+                    {
+                      $query = "SELECT category_name, title, content
+                                FROM category, note
+                                WHERE category_id = category.id";
+                    }
+            else { 
+                      $query = "SELECT category_name, title, content
+                                FROM category, note
+                                WHERE category_id = category.id AND category_id = ".$categ_id;
+                  }           
             $data = mysqli_query($dbc, $query);
-            $categ_id = '0';
-
 
             for ($i = 0; $i < mysqli_num_rows($data); $i++) {
             
-            if (isset($_GET["category"]))
-            {
-                $categ_id = $_GET["category"];
-            }
+            
                   
               $row = mysqli_fetch_array($data);
 
