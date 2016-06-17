@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <h3>Do Me</h3>
 
 
-                 <ul id="dropdown2" class="dropdown-content grey">
+                 <ul id="dropdown2" class="dropdown-content">
                     <li><a href="#!">All</a></li>
                     <li><a href="#!">Work</a></li>
                     <li><a href="#!">School</a></li>
@@ -35,37 +35,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                  <button data-target = "modal1" id="download-button" class="waves-effect waves-light btn deep-purple darken-2 modal-trigger">+ DO</button>
                   <!-- Modal Structure -->
-                    <div id="modal1" class="modal">
+                    <div id="modal1" class="modal modal-fixed-footer">
                       <div class="modal-content">
-                        <div class="section scrollspy" id="news">
-                            <div class="container">
+
+                              <h4>What'cha wanna do?</h4>
                                 <div class="row">
                                      <div class="col s12 m5 l12">
-                                           <div class="row">
                                             <form class="col s12">
-                                              <div class="row">
+                                                <div class="row">
+                                                 <div class="input-field col s12">
+                                                    <input id="icon_name" type="text" class="browser-default">
+                                                    <label for="icon_name">Title</label>
+                                                 </div>
+                                               </div>
 
-                                                <div class="input-field col s12">
+                                                 <div class="row">
+                                                  <div class="input-field col s6">
+                                                    <select>
+                                                      <option value="" disabled selected>Choose a category</option>
+                                                      <option value="1">Work</option>
+                                                      <option value="2">Family</option>
+                                                      <option value="3">School</option>
+                                                      <option value="4">Health</option>
+                                                    </select>
+                                                    <label>Category</label>
+                                                  </div>
 
-                                                  <input id="icon_name" type="text" class="browser-default">
-                                                  <label for="icon_name">Title</label>
+                                                  <div class="input-field col s6">
+                                                    <label for="date-picker">Date</label>
+                                                    <input type="text" id="date-picker" class="datepicker">
+                                                  </div>
                                                 </div>
-                                                <div class="input-field col s12">
-
-                                                  <input id="icon_telephone" type="tel" class="validate">
-                                                  <label for="icon_telephone">Author</label>
+                                                <div class="row">
+                                                 <div class="input-field col s12">
+                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                                    <label for="textarea1">Content</label>
                                                 </div>
-                      </div>
-                    </form>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  </div>
-                  
+                                              </div>
+
+                                            </form>
+
+                                        </div>
+                                    </div>
+
+                    </div>
+
                       <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-purple btn-flat" type="submit" name="action" style="color:purple">DO</a>
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-gray btn-flat" style="color:purple">DO NOT</a>
+                        <a href="#!" class="btn-flat disabled">TRY</a>
                       </div>
                     </div>
             </div>
@@ -188,10 +206,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="js/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script type="text/javascript">
-     $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal-trigger').leanModal();
-  });
+       $(document).ready(function(){
+          // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+          $('select').material_select();
+          $('.modal-trigger').leanModal();
+       });
+
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+      });
   </script>
   </body>
 </html>
