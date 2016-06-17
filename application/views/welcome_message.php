@@ -26,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="row">
              <div class="col s12 m5 l8">
                  <h3>Do Me</h3>
+                 A list to remind you to do stuff.<br><br>
 
 
                  <ul id="dropdown2" class="dropdown-content grey">
@@ -75,7 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       </form>
                     </div>
                   </nav-->
-                  <br><br><br><br>
+                  <br><br><br><br><br><br>
                   <a class="btn dropdown-button grey darken-2" href="#!" data-activates="dropdown2">
                       <?php
                       $chosenCategName = "All";
