@@ -41,17 +41,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <h4>What'cha wanna do?</h4>
                                 <div class="row">
                                      <div class="col s12 m5 l12">
-                                            <form class="col s12">
+                                            <form class="col s12" method="post" action="index.php/do_controller/addDo" >
                                                 <div class="row">
                                                  <div class="input-field col s12">
-                                                    <input id="icon_name" type="text" class="browser-default">
-                                                    <label for="icon_name">Title</label>
+                                                    <input name="titleInput" type="text" class="browser-default">
+                                                    <label for="titleInput">Title</label>
                                                  </div>
                                                </div>
 
                                                  <div class="row">
                                                   <div class="input-field col s6">
-                                                    <select>
+                                                    <select name="categoryInput">
                                                       <option value="" disabled selected>Choose a category</option>
                                                       <option value="1">Work</option>
                                                       <option value="2">Family</option>
@@ -63,16 +63,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                                   <div class="input-field col s6">
                                                     <label for="date-picker">Date</label>
-                                                    <input type="text" id="date-picker" class="datepicker">
+                                                    <input type="text" name="dateInput" class="datepicker">
                                                   </div>
                                                 </div>
                                                 <div class="row">
                                                  <div class="input-field col s12">
-                                                    <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                                    <label for="textarea1">Content</label>
+                                                    <textarea name="contentInput" class="materialize-textarea"></textarea>
+                                                    <label for="contentInput">Content</label>
                                                 </div>
                                               </div>
 
+                                              <!-- footer TODO -->
+                                              <div class="modal-footer">
+                                                <input class=" modal-action modal-close waves-effect waves-purple btn-flat" type="submit" name="action" value="DO" style="color:purple"></input>
+                                                <a href="#!" class=" modal-action modal-close waves-effect waves-gray btn-flat" style="color:purple">DO NOT</a>
+                                                <a href="#!" class="btn-flat disabled">TRY</a>
+                                              </div>
+0
                                             </form>
 
                                         </div>
@@ -80,11 +87,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     </div>
 
-                      <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-purple btn-flat" type="submit" name="action" style="color:purple">DO</a>
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-gray btn-flat" style="color:purple">DO NOT</a>
-                        <a href="#!" class="btn-flat disabled">TRY</a>
-                      </div>
                     </div>
             </div>
 
