@@ -153,13 +153,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $dbc = mysqli_connect('localhost', 'root', '', 'do_me');
             if($categ_id == '0')
                     {
-                      $query = "SELECT category_name, title, content
+                      $query = "SELECT category_name, title, content, date
                                 FROM category, note
                                 WHERE category_id = category.id
                                 ORDER BY note.id DESC";
                     }
             else {
-                      $query = "SELECT category_name, title, content
+                      $query = "SELECT category_name, title, content, date
                                 FROM category, note
                                 WHERE category_id = category.id AND category_id = ".$categ_id."
                                 ORDER BY note.id DESC";
@@ -175,7 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               echo '<li><div class="card">
                       <div class="card-content">
                           <span class="card-title activator grey-text text-darken-4"><b class="activator">'
-                      .$row['title']
+                      .$row['title'].' ('.$row['date'].')'
                       .'</b><i class="mdi-navigation-more-vert right"></i></span>
                           <p>'
                       .$row['category_name']
