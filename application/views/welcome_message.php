@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
        <div class="row">
-
+        <ul id="staggered-test">
           <?php
             $dbc = mysqli_connect('localhost', 'root', '', 'do_me');
             if($categ_id == '0')
@@ -127,7 +127,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               $row = mysqli_fetch_array($data);
 
-              echo '<div class="card">
+              echo '<li><div class="card">
                       <div class="card-content">
                           <span class="card-title activator grey-text text-darken-4"><b class="activator">'
                       .$row['title']
@@ -149,11 +149,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a href="#" class="grey-text text-darken-3">Delete</a>
                         <a href="#" class="purple-text">Done!</a>
                       </div>
-                  </div>      '
+                  </div></li>      '
               ;
           }
         ?>
-
+      </ul>
         </div>
     </div>
     </div>
@@ -223,6 +223,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
      $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
     $('.modal-trigger').leanModal();
+    Materialize.showStaggeredList('#staggered-test');
   });
   </script>
   </body>
