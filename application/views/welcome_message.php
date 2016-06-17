@@ -58,7 +58,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <h4>What'cha wanna do?</h4>
                                 <div class="row">
                                      <div class="col s12 m5 l12">
-                                            <form class="col s12" method="post" action="index.php/do_controller/addDo" >
+                                            <form class="col s12" method="post" id="add_form" action="index.php/do_controller/addDo" >
                                                 <div class="row">
                                                  <div class="input-field col s12">
                                                     <input name="titleInput" type="text" class="browser-default">
@@ -92,11 +92,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                               <!-- footer TODO -->
                                               <div class="modal-footer">
-                                                <input class=" modal-action modal-close waves-effect waves-purple btn-flat" type="submit" name="action" value="DO" style="color:purple"></input>
+                                                <a href="javascript: submitAddForm();" class=" modal-action modal-close waves-effect waves-purple btn-flat" type="submit" name="action" style="color:purple">DO</input>
                                                 <a href="#!" class=" modal-action modal-close waves-effect waves-gray btn-flat" style="color:purple">DO NOT</a>
                                                 <a href="#!" class="btn-flat disabled">TRY</a>
                                               </div>
-                                            </form>
+                                              </form>
 
                                         </div>
                                     </div>
@@ -275,6 +275,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 15 // Creates a dropdown of 15 years to control year
       });
+
+      function submitAddForm(){
+        $('#add_form').submit();
+      }
   </script>
   </body>
 </html>
