@@ -155,12 +155,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     {
                       $query = "SELECT category_name, title, content
                                 FROM category, note
-                                WHERE category_id = category.id";
+                                WHERE category_id = category.id
+                                ORDER BY note.id DESC";
                     }
             else {
                       $query = "SELECT category_name, title, content
                                 FROM category, note
-                                WHERE category_id = category.id AND category_id = ".$categ_id;
+                                WHERE category_id = category.id AND category_id = ".$categ_id."
+                                ORDER BY note.id DESC";
                   }
             $data = mysqli_query($dbc, $query);
 
