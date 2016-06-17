@@ -37,9 +37,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <!-- Modal Structure -->
                     <div id="modal1" class="modal">
                       <div class="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
+                        <div class="section scrollspy" id="news">
+                            <div class="container">
+                                <div class="row">
+                                     <div class="col s12 m5 l12">
+                                           <div class="row">
+                                            <form class="col s12">
+                                              <div class="row">
+
+                                                <div class="input-field col s12">
+
+                                                  <input id="icon_name" type="text" class="browser-default">
+                                                  <label for="icon_name">Title</label>
+                                                </div>
+                                                <div class="input-field col s12">
+
+                                                  <input id="icon_telephone" type="tel" class="validate">
+                                                  <label for="icon_telephone">Author</label>
+                                                </div>
                       </div>
+                    </form>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  
                       <div class="modal-footer">
                         <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
                       </div>
