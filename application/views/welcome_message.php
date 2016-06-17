@@ -26,10 +26,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                  <ul id="dropdown2" class="dropdown-content grey">
-                    <li><a href="#!">All</a></li>
-                    <li><a href="#!">Work</a></li>
-                    <li><a href="#!">School</a></li>
-                    <li><a href="#!">Health</a></li>
+                    <li><a href="index.php?category=0">All</a></li>
+                    <li><a href="index.php?category=1">Work</a></li>
+                    <li><a href="index.php?category=2">School</a></li>
+                    <li><a href="index.php?category=3">Health</a></li>
                  </ul>
 
 
@@ -66,14 +66,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
        <div class="row">
 
           <?php
-            $dbc = mysqli_connect('localhost', 'root', '', 'do_me');
+            $dbc = mysqli_connect('localhost', 'root', '', 'prosdev');
             $query = "SELECT category_name, title, content
                       FROM category, note
                       WHERE category_id = category.id";
             $data = mysqli_query($dbc, $query);
+            $categ_id = '0';
 
 
             for ($i = 0; $i < mysqli_num_rows($data); $i++) {
+            
+            if (isset($_GET["category"]))
+            {
+                $categ_id = $_GET["category"];
+            }
+                  
               $row = mysqli_fetch_array($data);
 
               echo '<div class="card">
