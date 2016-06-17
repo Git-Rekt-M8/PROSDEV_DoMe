@@ -79,7 +79,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <a href="#!" class=" modal-action modal-close waves-effect waves-gray btn-flat" style="color:purple">DO NOT</a>
                                                 <a href="#!" class="btn-flat disabled">TRY</a>
                                               </div>
-0
                                             </form>
 
                                         </div>
