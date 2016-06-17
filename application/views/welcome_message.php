@@ -28,7 +28,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <h3>Do Me</h3>
                  A list to remind you to do stuff.<br><br>
 
-
                  <ul id="dropdown2" class="dropdown-content grey">
                     <li><a href="index.php?category=0">All</a></li>
                   <?php
@@ -53,14 +52,57 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                  <button data-target = "modal1" id="download-button" class="waves-effect waves-light btn deep-purple darken-2 modal-trigger">+ DO</button>
                   <!-- Modal Structure -->
-                    <div id="modal1" class="modal">
+                    <div id="modal1" class="modal modal-fixed-footer">
                       <div class="modal-content">
-                        <h4>Modal Header</h4>
-                        <p>A bunch of text</p>
-                      </div>
-                      <div class="modal-footer">
-                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-                      </div>
+
+                              <h4>What'cha wanna do?</h4>
+                                <div class="row">
+                                     <div class="col s12 m5 l12">
+                                            <form class="col s12" method="post" action="index.php/do_controller/addDo" >
+                                                <div class="row">
+                                                 <div class="input-field col s12">
+                                                    <input name="titleInput" type="text" class="browser-default">
+                                                    <label for="titleInput">Title</label>
+                                                 </div>
+                                               </div>
+
+                                                 <div class="row">
+                                                  <div class="input-field col s6">
+                                                    <select name="categoryInput">
+                                                      <option value="" disabled selected>Choose a category</option>
+                                                      <option value="1">Work</option>
+                                                      <option value="2">Family</option>
+                                                      <option value="3">School</option>
+                                                      <option value="4">Health</option>
+                                                    </select>
+                                                    <label>Category</label>
+                                                  </div>
+
+                                                  <div class="input-field col s6">
+                                                    <label for="date-picker">Date</label>
+                                                    <input type="text" name="dateInput" class="datepicker">
+                                                  </div>
+                                                </div>
+                                                <div class="row">
+                                                 <div class="input-field col s12">
+                                                    <textarea name="contentInput" class="materialize-textarea"></textarea>
+                                                    <label for="contentInput">Content</label>
+                                                </div>
+                                              </div>
+
+                                              <!-- footer TODO -->
+                                              <div class="modal-footer">
+                                                <input class=" modal-action modal-close waves-effect waves-purple btn-flat" type="submit" name="action" value="DO" style="color:purple"></input>
+                                                <a href="#!" class=" modal-action modal-close waves-effect waves-gray btn-flat" style="color:purple">DO NOT</a>
+                                                <a href="#!" class="btn-flat disabled">TRY</a>
+                                              </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+
+                    </div>
+
                     </div>
             </div>
 
@@ -223,9 +265,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script type="text/javascript">
      $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal-trigger').leanModal();
-    Materialize.showStaggeredList('#staggered-test');
-  });
+          Materialize.showStaggeredList('#staggered-test');
+          $('.modal-trigger').leanModal();
+
+          $('select').material_select();
+       });
+
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+      });
   </script>
   </body>
 </html>
