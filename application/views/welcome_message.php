@@ -37,13 +37,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             FROM category";
                                   $data = mysqli_query($dbc, $query);
 
-                                  for ($i = 0; $i < mysqli_num_rows($data); $i++) 
+                                  for ($i = 0; $i < mysqli_num_rows($data); $i++)
                                   {
                                     $row = mysqli_fetch_array($data);
-                                    array_push($categoryArray, $row ['category_name']); 
+                                    array_push($categoryArray, $row ['category_name']);
                                     echo '<li><a href="index.php?category='.$row['id'].'">'.$row['category_name'].'</a></li>';
                                   }
-                      
+
 
 
                   ?>
@@ -87,11 +87,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         if($categ_id !='0'){
 
                             $query = "SELECT id, category_name
-                                  FROM category 
+                                  FROM category
                                   WHERE id = ".$categ_id;
 
                             $data = mysqli_query($dbc, $query);
-                            
+
                             $row = mysqli_fetch_array($data);
                             $chosenCategName = $row['category_name'];
                           }
@@ -114,22 +114,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 FROM category, note
                                 WHERE category_id = category.id";
                     }
-            else { 
+            else {
                       $query = "SELECT category_name, title, content
                                 FROM category, note
                                 WHERE category_id = category.id AND category_id = ".$categ_id;
-                  }           
+                  }
             $data = mysqli_query($dbc, $query);
 
             for ($i = 0; $i < mysqli_num_rows($data); $i++) {
-            
-            
-                  
+
+
+
               $row = mysqli_fetch_array($data);
 
               echo '<div class="card">
                       <div class="card-content">
-                          <span class="card-title activator grey-text text-darken-4"><b>'
+                          <span class="card-title activator grey-text text-darken-4"><b class="activator">'
                       .$row['title']
                       .'</b><i class="mdi-navigation-more-vert right"></i></span>
                           <p>'
@@ -143,6 +143,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           <p>'
                       .$row['content']
                       .'</p>
+                      </div>
+                      <div class="card-action right-align">
+                        <a href="#" class="grey-text text-darken-3">Edit</a>
+                        <a href="#" class="grey-text text-darken-3">Delete</a>
+                        <a href="#" class="purple-text">Done!</a>
                       </div>
                   </div>      '
               ;
